@@ -1,0 +1,127 @@
+<Defs>
+	
+ <HediffDef>
+      <defName>ToxicshockSTNL</defName>
+      <label>Toxic shock</label>
+      <description>This creature is being affected by toxins skipped inside them, the sheer concentration of theses toxins allow them to bypass toxic resistance.</description>
+      <descriptionShort>This creature is being affected by toxins skipped inside them, the sheer concentration of theses toxins allow them to bypass toxic resistance.</descriptionShort>
+      <defaultLabelColor>(0, 1, 0)</defaultLabelColor>
+      <scenarioCanAdd>false</scenarioCanAdd>
+      <initialSeverity>1</initialSeverity> 
+      <minSeverity>0</minSeverity>
+      <maxSeverity>1</maxSeverity>
+      <isBad>True</isBad>
+	  <makesSickThought>true</makesSickThought>
+      <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+      <stages>
+	         <li>
+			 <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.8</setMax>
+          </li>
+		   <li>
+            <capacity>Moving</capacity>
+            <setMax>0.3</setMax>
+          </li>
+		   <li>
+            <capacity>Breathing</capacity>
+            <setMax>0.5</setMax>
+          </li>
+        </capMods>
+         </li>
+      </stages>
+      <hediffClass>HediffWithComps</hediffClass>
+	  <comps>
+	  <li Class="HediffCompProperties_Effecter">
+<stateEffecter>ToxGasReleasing</stateEffecter>
+</li>
+<li Class="HediffCompProperties_Disappears">
+<disappearsAfterTicks>12000</disappearsAfterTicks>
+<showRemainingTime>True</showRemainingTime>
+        </li>
+</comps>
+   </HediffDef> 	
+
+<AbilityDef>
+    <defName>ReleaseToxinSTNL</defName>
+    <label>release toxic gas</label>
+    <description>Release a cloud of toxic gas as a defense tactic, you are still vulnerable to this gas though.</description>
+    <iconPath>UI_BiohazardSTNL/Abilities/GlandMutation</iconPath>
+    <cooldownTicksRange>12000</cooldownTicksRange> <!-- 1 day -->
+    <showPsycastEffects>false</showPsycastEffects>
+    <sendMessageOnCooldownComplete>false</sendMessageOnCooldownComplete>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <hotKey>Misc1</hotKey>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <label>release toxic gas</label>
+      <drawAimPie>false</drawAimPie>
+      <warmupTime>0.5</warmupTime>
+      <violent>false</violent>
+      <targetable>false</targetable>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+      <soundCast>Explosion_FirefoamPopper</soundCast>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityReleaseGas">
+        <gasType>ToxGas</gasType>
+        <cellsToFill>30</cellsToFill>
+      </li>
+    </comps>
+  </AbilityDef>
+
+ <HediffDef>
+      <defName>ToxglandsSTNL</defName>
+      <label>Tox-Glands</label>
+      <description>This person possesses the ability to spew out toxic gas from their body, they remain vulnerable to this gas though.</description>
+      <descriptionShort>This person possesses the ability to spew out toxic gas out of the pores of their skin, they remain vulnerable to this gas though.</descriptionShort>
+      <defaultLabelColor>(0, 1, 0)</defaultLabelColor>
+      <scenarioCanAdd>true</scenarioCanAdd>
+      <initialSeverity>1</initialSeverity> 
+      <minSeverity>0</minSeverity>
+      <maxSeverity>1</maxSeverity>
+      <isBad>false</isBad>
+      <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+      <stages>
+	         <li>
+         </li>
+      </stages>
+	   <abilities>
+      <li>ReleaseToxinSTNL</li>
+    </abilities>
+   </HediffDef>
+
+<HediffDef>
+      <defName>ToxicImmunitySTNL</defName>
+      <label>Toxic Immunity</label>
+      <description>This creature is immune to airborne toxic buildup due to a mutation in their airway acting as natural filter, does not prevent the lungs and eyes from hurting due to toxic gas exposure.</description>
+      <descriptionShort>This creature is immune to airborne toxic buildup due to a mutation in their airway acting as natural filter, does not prevent the lungs and eyes from hurting due to toxic gas exposure.</descriptionShort>
+      <defaultLabelColor>(0, 1, 0)</defaultLabelColor>
+      <scenarioCanAdd>false</scenarioCanAdd>
+      <initialSeverity>1</initialSeverity> 
+      <minSeverity>0</minSeverity>
+      <maxSeverity>1</maxSeverity>
+      <isBad>false</isBad>
+      <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+<stages>
+ <li>
+
+<capMods>
+<li>
+<capacity>Breathing</capacity>
+<offset>-0.1</offset>
+</li>
+</capMods>
+ <statOffsets>
+      <ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+    </statOffsets>
+</li>
+</stages>
+   </HediffDef> 	
+
+</Defs>

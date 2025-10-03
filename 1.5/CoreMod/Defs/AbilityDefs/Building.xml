@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>	
+
+<ThingDef Name="TrapIEDBaseBSTNL" ParentName="BuildingBase" Abstract="True">
+<thingClass>Building_TrapExplosive</thingClass>
+<graphicData>
+<graphicClass>Graphic_Single</graphicClass>
+<damageData>
+<rect>(0.1,0,0.8,0.3)</rect>
+</damageData>
+</graphicData>
+<uiIconOffset>(0,-0.14)</uiIconOffset>
+<altitudeLayer>Building</altitudeLayer>
+<rotatable>false</rotatable>
+<tickerType>Normal</tickerType>
+<stealable>false</stealable>
+<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+<uiOrder>40</uiOrder>
+<statBases>
+<Mass>2</Mass>
+<MaxHitPoints>1</MaxHitPoints>
+<WorkToBuild>1400</WorkToBuild>
+<Flammability>0</Flammability>
+<Beauty>-4</Beauty>
+<TrapSpringChance>1.0</TrapSpringChance>
+</statBases>
+<building>
+<isTrap>true</isTrap>
+<trapPeacefulWildAnimalsSpringChanceFactor>1</trapPeacefulWildAnimalsSpringChanceFactor>
+<expandHomeArea>false</expandHomeArea>
+<ai_chillDestination>false</ai_chillDestination>
+</building>
+<constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+</ThingDef>
+
+<ThingDef ParentName="TrapIEDBaseBSTNL">
+<defName>TrapIED_ToxgasSTNL</defName>
+<label>Unstable Toxic IED</label>
+<description>An highly unstable toxic gas IED, the slightest amount of damage will set it off.</description>
+<graphicData>
+<texPath>Things/Building/Security/IEDTox</texPath>
+</graphicData>
+<uiOrder>44</uiOrder>
+<costList>
+</costList>
+<designationHotKey>Misc12</designationHotKey>
+<comps>
+<li Class="CompProperties_Explosive">
+<explosiveRadius>6</explosiveRadius>
+<explosiveDamageType>ToxGas</explosiveDamageType>
+<startWickHitPointsPercent>0.99</startWickHitPointsPercent>
+<postExplosionGasType>ToxGas</postExplosionGasType>
+<wickTicks>0</wickTicks>
+<startWickOnDamageTaken>
+<li>Bullet</li>
+<li>Arrow</li>
+<li>ArrowHighVelocity</li>
+</startWickOnDamageTaken>
+</li>
+</comps>
+<specialDisplayRadius>10.9</specialDisplayRadius>
+</ThingDef>
+
+<ThingDef ParentName="BuildingBase">
+<defName>ToxifierGeneratorSTNL</defName>
+<label>Broken Reactor</label>
+<description>This electrical generator is failing, causing it to produce extreme amounts of pollution without any power output.</description>
+<tickerType>Normal</tickerType>
+<graphicData>
+<texPath>Things/Building/Power/ToxifierGenerator</texPath>
+<graphicClass>Graphic_Single</graphicClass>
+<drawSize>(7,7)</drawSize>
+<shadowData>
+<volume>(1.6, 1, 1.5)</volume>
+</shadowData>
+</graphicData>
+<altitudeLayer>Building</altitudeLayer>
+<passability>Impassable</passability>
+<fillPercent>1</fillPercent>
+<rotatable>false</rotatable>
+<building>
+<ai_chillDestination>false</ai_chillDestination>
+<soundAmbient>Toxifier_Working</soundAmbient>
+</building>
+<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+<uiOrder>2100</uiOrder>
+<canOverlapZones>false</canOverlapZones>
+<statBases>
+<MaxHitPoints>300</MaxHitPoints>
+<WorkToBuild>8000</WorkToBuild>
+<Mass>25</Mass>
+<Flammability>0.5</Flammability>
+</statBases>
+<size>(7,7)</size>
+<costList>
+</costList>
+<comps>
+<li Class="CompProperties_Toxifier">
+<radius>250</radius>
+<cellsToPollute>1000</cellsToPollute>
+<pollutionIntervalTicks>12000</pollutionIntervalTicks>
+<!--  3 days  -->
+</li>
+<li Class="CompProperties_CausesGameCondition">
+        <conditionDef>ToxicFallout</conditionDef>
+        <worldRange>10</worldRange>
+      </li>
+</comps>
+<placeWorkers>
+<li>PlaceWorker_ToxifierGenerator</li>
+</placeWorkers>
+<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+</ThingDef>
+
+<!--                                         BIOSOOTHER                                           -->
+
+
+<ThingDef ParentName="BuildingBase">
+<defName>PollutionPumpSmolSTNL</defName>
+<label>Temporary Pollution Pump</label>
+<description>A groundwater-filtering pump which slowly cleans polluted terrain. The extracted pollution is formed into toxic wastepacks which must be hauled away. Will destroy itself after a short time.</description>
+<tickerType>Normal</tickerType>
+<minifiedDef>MinifiedThing</minifiedDef>
+<thingCategories>
+<li>BuildingsMisc</li>
+</thingCategories>
+<graphicData>
+<texPath>Things/Building/Production/PollutionPump</texPath>
+<graphicClass>Graphic_Single</graphicClass>
+<drawSize>(1,1)</drawSize>
+</graphicData>
+<uiIconScale>0.85</uiIconScale>
+<rotatable>false</rotatable>
+<altitudeLayer>Building</altitudeLayer>
+<passability>PassThroughOnly</passability>
+<fillPercent>0.2</fillPercent>
+<building>
+<ai_chillDestination>false</ai_chillDestination>
+<buildingTags>
+<li>Biotech</li>
+</buildingTags>
+</building>
+<constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+<statBases>
+<MaxHitPoints>200</MaxHitPoints>
+<WorkToBuild>4000</WorkToBuild>
+<Mass>15</Mass>
+<Flammability>0.5</Flammability>
+</statBases>
+<size>(1,1)</size>
+<costList>
+</costList>
+<researchPrerequisites>
+<li>Electricity</li>
+</researchPrerequisites>
+<comps>
+<li Class="CompProperties_PollutionPump">
+<radius>6</radius>
+<pumpEffecterDef>PollutionPumped</pumpEffecterDef>
+<pumpsPerWastepack>1</pumpsPerWastepack>
+<intervalTicks>0</intervalTicks>
+</li>
+<li Class="CompProperties_DestroyAfterDelay">
+<delayTicks>6000</delayTicks>
+</li>
+<li Class="CompProperties_Flickable"/>
+</comps>
+<placeWorkers>
+<li>PlaceWorker_PollutionPump</li>
+</placeWorkers>
+<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+</ThingDef>
+
+<ThingDef ParentName="BuildingBase">
+<defName>PollutionPumpLargeSTNL</defName>
+<label>Large Pollution Pump</label>
+<description>A groundwater-filtering pump which slowly cleans polluted terrain. The extracted pollution is formed into toxic wastepacks which must be hauled away.</description>
+<tickerType>Normal</tickerType>
+<minifiedDef>MinifiedThing</minifiedDef>
+<thingCategories>
+<li>BuildingsMisc</li>
+</thingCategories>
+<graphicData>
+<texPath>Things/Building/Power/ToxifierGenerator</texPath>
+<graphicClass>Graphic_Single</graphicClass>
+<drawSize>(4,4)</drawSize>
+</graphicData>
+<uiIconScale>0.85</uiIconScale>
+<rotatable>false</rotatable>
+<altitudeLayer>Building</altitudeLayer>
+<passability>PassThroughOnly</passability>
+<fillPercent>0.2</fillPercent>
+<building>
+<ai_chillDestination>false</ai_chillDestination>
+<buildingTags>
+<li>Biotech</li>
+</buildingTags>
+</building>
+<constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+<statBases>
+<MaxHitPoints>200</MaxHitPoints>
+<WorkToBuild>4000</WorkToBuild>
+<Mass>15</Mass>
+<Flammability>0.5</Flammability>
+</statBases>
+<size>(4,4)</size>
+<costList>
+</costList>
+<researchPrerequisites>
+<li>Electricity</li>
+</researchPrerequisites>
+<comps>
+<li Class="CompProperties_Power">
+<compClass>CompPowerTrader</compClass>
+<basePowerConsumption>500</basePowerConsumption>
+</li>
+<li Class="CompProperties_PollutionPump">
+<radius>25</radius>
+<pumpEffecterDef>PollutionPumped</pumpEffecterDef>
+<pumpsPerWastepack>6</pumpsPerWastepack>
+<intervalTicks>7500</intervalTicks>
+</li>
+<li Class="CompProperties_Flickable"/>
+</comps>
+<placeWorkers>
+<li>PlaceWorker_PollutionPump</li>
+</placeWorkers>
+<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+</ThingDef>
+
+<ThingDef ParentName="BuildingBase">
+<defName>PollutionPumpSTNL</defName>
+<label>Massive Pollution Pump</label>
+<description>A groundwater-filtering pump which slowly cleans polluted terrain. The extracted pollution is formed into toxic wastepacks which must be hauled away. Self powered by using a waste-fueled internal generator.</description>
+<tickerType>Normal</tickerType>
+<minifiedDef>MinifiedThing</minifiedDef>
+<thingCategories>
+<li>BuildingsMisc</li>
+</thingCategories>
+<graphicData>
+<texPath>UI_BiohazardSTNL/Building/Pump/FatPump</texPath>
+<graphicClass>Graphic_Single</graphicClass>
+<drawSize>(7,7)</drawSize>
+</graphicData>
+<uiIconScale>0.85</uiIconScale>
+<rotatable>false</rotatable>
+<altitudeLayer>Building</altitudeLayer>
+<passability>PassThroughOnly</passability>
+<fillPercent>0.2</fillPercent>
+<building>
+<ai_chillDestination>false</ai_chillDestination>
+<buildingTags>
+<li>Biotech</li>
+</buildingTags>
+</building>
+<constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+<statBases>
+<MaxHitPoints>200</MaxHitPoints>
+<WorkToBuild>4000</WorkToBuild>
+<Mass>15</Mass>
+<Flammability>0.5</Flammability>
+</statBases>
+<size>(7,7)</size>
+<costList>
+</costList>
+<researchPrerequisites>
+<li>Electricity</li>
+</researchPrerequisites>
+<comps>
+<li Class="CompProperties_PollutionPump">
+<radius>250</radius>
+<pumpEffecterDef>PollutionPumped</pumpEffecterDef>
+<pumpsPerWastepack>1</pumpsPerWastepack>
+<intervalTicks>1</intervalTicks>
+</li>
+<li Class="CompProperties_Flickable"/>
+</comps>
+<placeWorkers>
+<li>PlaceWorker_PollutionPump</li>
+</placeWorkers>
+<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+</ThingDef>
+
+<ThingDef ParentName="BuildingBase">
+<defName>WastepackAtomizerSTNL</defName>
+<label>Reconfigured wastepack atomizer</label>
+<description>A glittertech device that deconstructs toxic wastepacks into inert gases using advanced molecular processes. The process requires considerable amounts of power.</description>
+<thingClass>Building_WastepackAtomizer</thingClass>
+<drawerType>MapMeshAndRealTime</drawerType>
+<tickerType>Normal</tickerType>
+<graphicData>
+<texPath>Things/Building/Misc/WastepackAtomizer</texPath>
+<graphicClass>Graphic_Multi</graphicClass>
+<drawSize>(5,4)</drawSize>
+<shadowData>
+<volume>(3, 0.35, 2)</volume>
+</shadowData>
+</graphicData>
+<altitudeLayer>Building</altitudeLayer>
+<passability>PassThroughOnly</passability>
+<canOverlapZones>false</canOverlapZones>
+<pathCost>42</pathCost>
+<blockWind>true</blockWind>
+<fillPercent>0.5</fillPercent>
+<building>
+<buildingTags>
+<li>Biotech</li>
+</buildingTags>
+<ai_chillDestination>false</ai_chillDestination>
+<wastepackAtomizerBottomGraphic>
+<texPath>Things/Building/Misc/WastepackAtomizer_BottomLayer</texPath>
+<graphicClass>Graphic_Multi</graphicClass>
+<drawSize>(5,4)</drawSize>
+</wastepackAtomizerBottomGraphic>
+<wastepackAtomizerWindowGraphic>
+<texPath>Things/Building/Misc/WastepackAtomizerWindow</texPath>
+<graphicClass>Graphic_Multi</graphicClass>
+<drawSize>(5,4)</drawSize>
+</wastepackAtomizerWindowGraphic>
+<wastepackAtomizerOperationEffecter>WastepackAtomizer_Operating</wastepackAtomizerOperationEffecter>
+</building>
+<hasInteractionCell>true</hasInteractionCell>
+<interactionCellOffset>(0, 0, -1)</interactionCellOffset>
+<statBases>
+<MaxHitPoints>500</MaxHitPoints>
+<WorkToBuild>30000</WorkToBuild>
+<Mass>80</Mass>
+<Flammability>0.5</Flammability>
+</statBases>
+<size>(5,4)</size>
+<costList>
+</costList>
+<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+<comps>
+<li Class="CompProperties_Power">
+<compClass>CompPowerTrader</compClass>
+<basePowerConsumption>1500</basePowerConsumption>
+</li>
+<li Class="CompProperties_Atomizer">
+<thingDef>Wastepack</thingDef>
+<stackLimit>30</stackLimit>
+<drawContainedThing>false</drawContainedThing>
+<ticksPerAtomize>10000</ticksPerAtomize>
+<resolveEffecter>AtomizerResolve</resolveEffecter>
+<workingEffecter>WastepackAtomizer_Working</workingEffecter>
+<materialsAddedSound>WastepackAtomizer_MaterialInserted</materialsAddedSound>
+<contentsDrawOffset>(0.05, 0, 0.2)</contentsDrawOffset>
+</li>
+<li Class="CompProperties_Flickable"/>
+</comps>
+</ThingDef>
+
+</Defs>

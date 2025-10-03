@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef>
+    <defName>Shell_Toxgas_ReleasingSTNL</defName>
+    <label>Tox capsule</label>
+    <selectable>false</selectable>
+    <tickerType>Normal</tickerType>
+    <thingClass>ThingWithComps</thingClass>
+    <useHitPoints>false</useHitPoints>
+    <graphicData>
+<texPath>Things/Item/Resource/Shell/ToxLanded</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <comps>
+	  <li Class="VPE_Biohazard.CompProperties_GasEmitterGasThingSTNL">
+<gas>ToxGas</gas>
+</li>
+      <li Class="CompProperties_DestroyAfterDelay">
+        <delayTicks>600</delayTicks>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>
