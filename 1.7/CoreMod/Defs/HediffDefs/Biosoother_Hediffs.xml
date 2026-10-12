@@ -1,0 +1,60 @@
+<Defs>
+
+	<HediffDef>
+		<defName>ToxicImmunitySTNL</defName>
+		<label>Toxic environment immunity</label>
+		<description>This creature is immune to airborne toxic buildup due to a mutation in their airway acting as natural filter, does not prevent the lungs and eyes from hurting due to toxic gas exposure.</description>
+		<descriptionShort>This creature is immune to airborne toxic buildup due to a mutation in their airway acting as natural filter, does not prevent the lungs and eyes from hurting due to toxic gas exposure.</descriptionShort>
+		<defaultLabelColor>(0, 0.9, 0)</defaultLabelColor>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<initialSeverity>1</initialSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<isBad>false</isBad>
+		<keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>-0.1</offset>
+					</li>
+				</capMods>
+				<statOffsets>
+					<ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<!-- <HediffDef> -->
+	<!-- <defName>VPE_Biosoother_</defName> -->
+	<!-- <label></label> -->
+	<!-- <description>.</description> -->
+	<!-- <hediffClass>HediffWithComps</hediffClass> -->
+	<!-- <initialSeverity>1</initialSeverity> -->
+	<!-- <minSeverity>0</minSeverity> -->
+	<!-- <maxSeverity>1</maxSeverity> -->
+	<!-- <lethalSeverity>1</lethalSeverity> -->
+	<!-- <defaultLabelColor>(1, 0.8, 0)</defaultLabelColor> -->
+	<!-- <makesSickThought>false</makesSickThought> -->
+	<!-- <scenarioCanAdd>false</scenarioCanAdd> -->
+	<!-- <isBad>true</isBad> -->
+	<!-- <everCurableByItem>false</everCurableByItem> -->
+	<!-- <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration> -->
+	<!-- <alwaysAllowMothball>true</alwaysAllowMothball> -->
+	<!-- <modExtensions> -->
+	<!-- </modExtensions> -->
+	<!-- <stages> -->
+		<!-- <li> -->
+		<!-- </li> -->
+	<!-- </stages> -->
+	<!-- <comps> -->
+		<!-- <li Class="HediffCompProperties_DisappearsOnDeath"/> -->
+		<!-- <li Class="HediffCompProperties_Disappears"> -->
+			<!-- <disappearsAfterTicks>7500</disappearsAfterTicks> -->
+			<!-- <showRemainingTime>true</showRemainingTime> -->
+		<!-- </li> -->
+	<!-- </comps> -->
+<!-- </HediffDef> -->
+</Defs>

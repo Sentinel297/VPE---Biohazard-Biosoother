@@ -1,0 +1,132 @@
+<Defs>
+
+<!-- <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase"> -->
+	<!-- <defName>VPE_PoluxtreeSTNL</defName> -->
+	<!-- <label>Manifest Polux tree</label> -->
+	<!-- <description>Psychically alter a spot of dirt to grow a polux tree sprout.</description> -->
+	<!-- <iconPath>UI_BiohazardSTNL/Abilities/Tree</iconPath> -->
+	<!-- <abilityClass>VEF.Abilities.Ability_Spawn</abilityClass> -->
+	<!-- <castTime>60</castTime> -->
+	<!-- <range>16</range> -->
+	<!-- <targetMode>Location</targetMode> -->
+	<!-- <castSound>VPE_Decoy_Cast</castSound> -->
+	<!-- <needsTicking>true</needsTicking> -->
+	<!-- <chance>0</chance> -->
+	<!-- <modExtensions> -->
+	<!-- <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast"> -->
+	<!-- <path>VPE_BiosootherSTNL</path> -->
+	<!-- <level>1</level> -->
+	<!-- <order>2</order> -->
+	<!-- <psyfocusCost>0.05</psyfocusCost> -->
+	<!-- <entropyGain>10</entropyGain> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_Spawn"> -->
+	<!-- <thing>Plant_TreePolux</thing> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget"> -->
+	<!-- <effecterDef>Skip_ExitNoDelay</effecterDef> -->
+	<!-- <maintainForTicks>30</maintainForTicks> -->
+	<!-- <scale>1</scale> -->
+	<!-- </li> -->
+	<!-- </modExtensions> -->
+	<!-- </VEF.Abilities.AbilityDef> -->
+	<!-- <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase"> -->
+	<!-- <defName>VPE_BasePumpSTNL</defName> -->
+	<!-- <label>Skip Temporary Pollution Pump</label> -->
+	<!-- <description>Skip a distant pollution pump from local ruins to help you in the fight against pollution, this pump will instantly clean a small patch of pollution before failing.</description> -->
+	<!-- <iconPath>Things/Building/Production/PollutionPump</iconPath> -->
+	<!-- <castTime>15</castTime> -->
+	<!-- <range>15</range> -->
+	<!-- <castSound>Psycast_Skip_Exit</castSound> -->
+	<!-- <targetMode>Location</targetMode> -->
+	<!-- <abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass> -->
+	<!-- <needsTicking>true</needsTicking> -->
+	<!-- <chance>0</chance> -->
+	<!-- <modExtensions> -->
+	<!-- <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast"> -->
+	<!-- <path>VPE_BiosootherSTNL</path> -->
+	<!-- <level>2</level> -->
+	<!-- <order>1</order> -->
+	<!-- <psyfocusCost>0.20</psyfocusCost> -->
+	<!-- <entropyGain>50</entropyGain> -->
+	<!-- <prerequisites> -->
+	<!-- <li>VPE_PoluxtreeSTNL</li> -->
+	<!-- </prerequisites> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_Building"> -->
+	<!-- <building>PollutionPumpSmolSTNL</building> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget"> -->
+	<!-- <effecterDef>Skip_ExitNoDelay</effecterDef> -->
+	<!-- <maintainForTicks>60</maintainForTicks> -->
+	<!-- <scale>1</scale> -->
+	<!-- </li> -->
+	<!-- </modExtensions> -->
+	<!-- </VEF.Abilities.AbilityDef> -->
+	<!-- <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase"> -->
+	<!-- <defName>VPE_LargePumpSTNL</defName> -->
+	<!-- <label>Large Pollution Pump</label> -->
+	<!-- <description>Skip a large pollution pump to the selected area.</description> -->
+	<!-- <iconPath>Things/Building/Power/ToxifierGenerator</iconPath> -->
+	<!-- <castTime>15</castTime> -->
+	<!-- <range>15</range> -->
+	<!-- <castSound>Psycast_Skip_Exit</castSound> -->
+	<!-- <targetMode>Location</targetMode> -->
+	<!-- <abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass> -->
+	<!-- <needsTicking>true</needsTicking> -->
+	<!-- <chance>0</chance> -->
+	<!-- <modExtensions> -->
+	<!-- <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast"> -->
+	<!-- <path>VPE_BiosootherSTNL</path> -->
+	<!-- <level>2</level> -->
+	<!-- <order>2</order> -->
+	<!-- <psyfocusCost>0.50</psyfocusCost> -->
+	<!-- <entropyGain>60</entropyGain> -->
+	<!-- <prerequisites> -->
+	<!-- <li>VPE_BasePumpSTNL</li> -->
+	<!-- </prerequisites> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_Building"> -->
+	<!-- <building>PollutionPumpLargeSTNL</building> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget"> -->
+	<!-- <effecterDef>Skip_ExitNoDelay</effecterDef> -->
+	<!-- <maintainForTicks>60</maintainForTicks> -->
+	<!-- <scale>4</scale> -->
+	<!-- </li> -->
+	<!-- </modExtensions> -->
+	<!-- </VEF.Abilities.AbilityDef> -->
+	<!-- <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase"> -->
+	<!-- <defName>VPE_PollutionAtomizerSTNL</defName> -->
+	<!-- <label>Skip Reconfigured Wastepack Atomizer</label> -->
+	<!-- <description>Skip a distant wastepack atomizer prototype to help you disolve wastepacks, requires 1.5kW to run.</description> -->
+	<!-- <iconPath>UI_BiohazardSTNL/Building/Pump/Wastepack</iconPath> -->
+	<!-- <castTime>15</castTime> -->
+	<!-- <range>15</range> -->
+	<!-- <castSound>Psycast_Skip_Exit</castSound> -->
+	<!-- <targetMode>Location</targetMode> -->
+	<!-- <abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass> -->
+	<!-- <needsTicking>true</needsTicking> -->
+	<!-- <chance>0</chance> -->
+	<!-- <modExtensions> -->
+	<!-- <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast"> -->
+	<!-- <path>VPE_BiosootherSTNL</path> -->
+	<!-- <level>4</level> -->
+	<!-- <order>2</order> -->
+	<!-- <psyfocusCost>0.99</psyfocusCost> -->
+	<!-- <entropyGain>200</entropyGain> -->
+	<!-- <prerequisites> -->
+	<!-- <li>VPE_LargePumpSTNL</li> -->
+	<!-- </prerequisites> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_Building"> -->
+	<!-- <building>WastepackAtomizerSTNL</building> -->
+	<!-- </li> -->
+	<!-- <li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget"> -->
+	<!-- <effecterDef>Skip_ExitNoDelay</effecterDef> -->
+	<!-- <maintainForTicks>60</maintainForTicks> -->
+	<!-- <scale>3</scale> -->
+	<!-- </li> -->
+	<!-- </modExtensions> -->
+	<!-- </VEF.Abilities.AbilityDef> -->
+	</Defs>

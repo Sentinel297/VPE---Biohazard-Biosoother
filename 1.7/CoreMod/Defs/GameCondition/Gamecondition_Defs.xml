@@ -1,0 +1,52 @@
+<Defs>
+	<GameConditionDef>
+		<defName>ClearweatherSTNL</defName>
+		<conditionClass>GameCondition_ForceWeather</conditionClass>
+		<label>forced clear skies</label>
+		<description>An explosion in the sky caused the clouds to disperse.</description>
+		<endMessage>The weather is returning to its normal cycle.</endMessage>
+		<canBePermanent>false</canBePermanent>
+		<weatherDef>Clear</weatherDef>
+		<!--  Initial  -->
+		<natural>false</natural>
+	</GameConditionDef>
+	<!-- Harvest -->
+	<GameConditionDef>
+		<defName>VPE_Biosoother_PollutionCleanup_STNL</defName>
+		<conditionClass>VPE_Biohazard.GameCondition_MapPollution</conditionClass>
+		<label>Pollution breakdown</label>
+		<description>A distant engine is harvesting the pollution in the area.</description>
+		<!-- <endMessage>The weather is returning to its normal cycle.</endMessage> -->
+		<canBePermanent>false</canBePermanent>
+		<weatherDef>Clear</weatherDef>
+		<!--  Initial  -->
+		<natural>false</natural>
+		<modExtensions>
+			<li Class="VPE_Biohazard.MapPollutionModExt">
+				<pollutes>false</pollutes>
+				<chancePerCell>0.02</chancePerCell>
+				<checkInterval>10</checkInterval>
+			</li>
+		</modExtensions>
+	</GameConditionDef>
+	<!-- Toxic wasteland -->
+	<GameConditionDef>
+		<defName>VPE_Biosoother_ToxicWasteland_STNL</defName>
+		<conditionClass>VPE_Biohazard.GameCondition_MapPollution</conditionClass>
+		<label>Toxic wasteland</label>
+		<description>A distant engine is bombarding the area with pollution.</description>
+		<!-- <endMessage>The weather is returning to its normal cycle.</endMessage> -->
+		<canBePermanent>false</canBePermanent>
+		<weatherDef>Clear</weatherDef>
+		<!--  Initial  -->
+		<natural>false</natural>
+		<modExtensions>
+			<li Class="VPE_Biohazard.MapPollutionModExt">
+				<pollutes>true</pollutes>
+				<chancePerCell>0.02</chancePerCell>
+				<pollutionInfectionSeverity>0.01</pollutionInfectionSeverity>
+				<checkInterval>10</checkInterval>
+			</li>
+		</modExtensions>
+	</GameConditionDef>
+</Defs>

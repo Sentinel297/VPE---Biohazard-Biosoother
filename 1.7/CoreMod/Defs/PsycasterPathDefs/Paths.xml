@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>VPE_BiohazardSTNL</defName>
+    <label>Biohazard</label>
+    <description>Provoke different hazardous events and mutations to control toxins and pollution.</description>
+    <background>UI_BiohazardSTNL/Tree/Hazardtreebase</background>
+    <altBackground>UI_BiohazardSTNL/Tree/Hazardtreebase</altBackground>
+    <tab>Misc</tab>
+    <tooltip>Provoke different hazardous events and mutations to control toxins and pollution.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+  <VanillaPsycastsExpanded.PsycasterPathDef>
+    <defName>VPE_BiosootherV2STNL</defName>
+    <label>Biosoother</label>
+    <description>Manifest multiple ways to fight back against the pollution.</description>
+    <background>UI_BiohazardSTNL/Tree/Soothertreebase</background>
+    <altBackground>UI_BiohazardSTNL/Tree/Soothertreebase</altBackground>
+    <tab>Misc</tab>
+    <tooltip>Manifest multiple ways to fight back against the pollution.</tooltip>
+  </VanillaPsycastsExpanded.PsycasterPathDef>
+  
+  <!-- Discontinued -->
+  
+    <!-- <VanillaPsycastsExpanded.PsycasterPathDef> -->
+    <!-- <defName>VPE_BiosootherSTNL</defName> -->
+    <!-- <label>Biosoother</label> -->
+    <!-- <description>Manifest multiple ways to fight back against the pollution.</description> -->
+    <!-- <background>UI_BiohazardSTNL/Tree/Hazardtreebase</background> -->
+    <!-- <altBackground>UI_BiohazardSTNL/Tree/Hazardtreebase</altBackground> -->
+    <!-- <tab>Discontinued</tab> -->
+    <!-- <tooltip>Manifest multiple ways to fight back against the pollution.</tooltip> -->
+  <!-- </VanillaPsycastsExpanded.PsycasterPathDef> -->
+</Defs>
