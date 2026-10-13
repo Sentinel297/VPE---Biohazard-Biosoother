@@ -486,43 +486,6 @@
 	</modExtensions>
 </VEF.Abilities.AbilityDef>
 
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_Biosoother_RadialWasteDispersal_STNL</defName>
-	<label>Waste dispersion pulse</label>
-	<description>Psychically destabilize toxins in the target area to neutralize them. Pollutant agents will erupt in the form of a noxious gas.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/WasteDispersalAoE</iconPath>
-	<abilityClass>VPE_Biohazard.Ability_RadialDisperse</abilityClass>
-	<castTime>60</castTime>
-	<range>35.9</range>
-	<radius>0</radius>
-	<targetMode>Thing</targetMode>
-	<targetingParameters>
-		<canTargetLocations>true</canTargetLocations>
-		<canTargetSelf>false</canTargetSelf>
-		<canTargetAnimals>false</canTargetAnimals>
-		<canTargetPawns>false</canTargetPawns>
-		<canTargetHumans>false</canTargetHumans>
-		<canTargetMechs>false</canTargetMechs>
-		<!-- <canTargetItems>false</canTargetItems> -->
-		<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
-	</targetingParameters>
-	<castSound>VPE_Decoy_Cast</castSound>
-	<needsTicking>true</needsTicking>
-	<chance>0</chance>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiosootherV2STNL</path>
-			<level>1</level>
-			<order>2</order>
-			<psyfocusCost>0.07</psyfocusCost>
-			<entropyGain>50</entropyGain>
-			<prerequisites>
-			<li>VPE_Biosoother_WasteDispersal_STNL</li>
-			</prerequisites>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
 <!-- Level 2 -->
 
 <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
@@ -551,12 +514,49 @@
 	<modExtensions>
 		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
 			<path>VPE_BiosootherV2STNL</path>
-			<level>1</level>
+			<level>2</level>
 			<order>2</order>
 			<psyfocusCost>0.03</psyfocusCost>
 			<entropyGain>40</entropyGain>
 			<prerequisites>
 			<li>VPE_Biosoother_WasteDispersal_STNL</li>
+			</prerequisites>
+		</li>
+	</modExtensions>
+</VEF.Abilities.AbilityDef>
+
+<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+	<defName>VPE_Biosoother_RadialWasteDispersal_STNL</defName>
+	<label>Waste dispersion pulse</label>
+	<description>Psychically destabilize toxins in the target area to neutralize them. Pollutant agents will erupt in the form of a noxious gas.</description>
+	<iconPath>UI_BiohazardSTNL/Abilities/WasteDispersalAoE</iconPath>
+	<abilityClass>VPE_Biohazard.Ability_RadialDisperse</abilityClass>
+	<castTime>60</castTime>
+	<range>35.9</range>
+	<radius>0</radius>
+	<targetMode>Thing</targetMode>
+	<targetingParameters>
+		<canTargetLocations>true</canTargetLocations>
+		<canTargetSelf>false</canTargetSelf>
+		<canTargetAnimals>false</canTargetAnimals>
+		<canTargetPawns>false</canTargetPawns>
+		<canTargetHumans>false</canTargetHumans>
+		<canTargetMechs>false</canTargetMechs>
+		<!-- <canTargetItems>false</canTargetItems> -->
+		<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+	</targetingParameters>
+	<castSound>VPE_Decoy_Cast</castSound>
+	<needsTicking>true</needsTicking>
+	<chance>0</chance>
+	<modExtensions>
+		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+			<path>VPE_BiosootherV2STNL</path>
+			<level>2</level>
+			<order>3</order>
+			<psyfocusCost>0.07</psyfocusCost>
+			<entropyGain>50</entropyGain>
+			<prerequisites>
+			<li>VPE_Biosoother_GasSuppression_STNL</li>
 			</prerequisites>
 		</li>
 	</modExtensions>
@@ -591,7 +591,7 @@
 			<psyfocusCost>0.80</psyfocusCost>
 			<entropyGain>25</entropyGain>
 			<prerequisites>
-				<li>VPE_Biosoother_WasteDispersal_STNL</li>
+				<li>VPE_Biosoother_GasSuppression_STNL</li>
 			</prerequisites>
 		</li>
 		<li Class="VEF.Abilities.AbilityExtension_Hediff">
