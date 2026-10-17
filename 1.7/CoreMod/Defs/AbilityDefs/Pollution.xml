@@ -1,682 +1,661 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Defs>	
-
-<!-- Level 1 -->
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_ToxglandsSTNL</defName>
-	<label>Tox-gland mutation</label>
-	<description>Mutate the target to grant them the ability to spew out tox gas from themselves. The target will retain its toxic environemnt resistance.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/GlandMutation</iconPath>
-	<castTime>120</castTime>
-	<targetMode>Pawn</targetMode>
-	<range>14</range>
-	<castSound>Explosion_FirefoamPopper</castSound>
-	<needsTicking>true</needsTicking>
-	<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
-	<targetingParameters>
-		<canTargetLocations>False</canTargetLocations>
-		<canTargetSelf>True</canTargetSelf>
-		<canTargetAnimals>false</canTargetAnimals>
-		<canTargetPawns>True</canTargetPawns>
-		<canTargetHumans>True</canTargetHumans>
-		<canTargetMechs>false</canTargetMechs>
-	</targetingParameters>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>1</level>
-			<order>1</order>
-			<psyfocusCost>0.40</psyfocusCost>
-			<entropyGain>0</entropyGain>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_Hediff">
-			<hediff>ToxglandsSTNL</hediff>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-			<effecterDef>ToxGasReleasing</effecterDef>
-			<maintainForTicks>60</maintainForTicks>
-			<scale>1</scale>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-<!-- Level 2 -->
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_ToxmineSTNL</defName>
-	<label>Tox-mine</label>
-	<description>Skip a distant tox IED from a waster colony to your base, the skip process will make that IED unstable, causing it to be far more fragile than a standard one.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/Mine</iconPath>
-	<castTime>15</castTime>
-	<range>15</range>
-	<castSound>Psycast_Skip_Exit</castSound>
-	<targetMode>Location</targetMode>
-	<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-	<needsTicking>true</needsTicking>
-	<chance>0</chance>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>2</level>
-			<order>2</order>
-			<psyfocusCost>0.09</psyfocusCost>
-			<entropyGain>50</entropyGain>
-			<prerequisites>
-				<li>VPE_ToxglandsSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_Building">
-			<building>TrapIED_ToxgasSTNL</building>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-			<effecterDef>Skip_ExitNoDelay</effecterDef>
-			<maintainForTicks>60</maintainForTicks>
-			<scale>1</scale>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-<!-- Level 3 -->
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_ToxShockSTNL</defName>
-	<label>Toxic shock</label>
-	<description>Skip toxic waste directly inside of the target, greatly reducing their consciousnes as well as breathing and moving capabilities. Ignores resistance. Considered an horrible action by the target's faction.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/Shock</iconPath>
-	<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
-	<castTime>60</castTime>
-	<goodwillImpact>-100</goodwillImpact>
-	<castSound>Psycast_Skip_Pulse</castSound>
-	<range>45</range>
-	<radius>8</radius>
-	<targetMode>Location</targetMode>
-	<hasAoE>true</hasAoE>
-	<needsTicking>true</needsTicking>
-	<targetingParametersForAoE>
-		<canTargetSelf>False</canTargetSelf>
-		<canTargetHumans>True</canTargetHumans>
-		<canTargetMechs>false</canTargetMechs>
-		<canTargetAnimals>True</canTargetAnimals>
-		<neverTargetIncapacitated>false</neverTargetIncapacitated>
-	</targetingParametersForAoE>
-	<fleckOnTarget>VFEP_PsycastAreaEffectSlow</fleckOnTarget>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>3</level>
-			<order>1</order>
-			<psyfocusCost>0.06</psyfocusCost>
-			<entropyGain>30</entropyGain>
-			<prerequisites>
-				<li>VPE_ToxmineSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_Hediff">
-			<hediff>ToxicshockSTNL</hediff>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_PollutionFocusSTNL</defName>
-	<label>Waste focus</label>
-	<description>Absorb the primary chemical present within wastepacks and convert it into psyfocus, the process will cause leftover chemicals to pollute the nearby area.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/Wastefocus</iconPath>
-	<abilityClass>VPE_Biohazard.Ability_PollutionFocus</abilityClass>
-	<castTime>60</castTime>
-	<chance>0</chance>
-	<!-- <goodwillImpact>-100</goodwillImpact> -->
-	<castSound>Psycast_Skip_Pulse</castSound>
-	<range>14.9</range>
-	<targetMode>Thing</targetMode>
-	<needsTicking>true</needsTicking>
-	<targetingParameters>
-		<canTargetItems>True</canTargetItems>
-		<canTargetLocations>False</canTargetLocations>
-		<canTargetSelf>False</canTargetSelf>
-		<canTargetHumans>False</canTargetHumans>
-		<canTargetMechs>False</canTargetMechs>
-		<canTargetAnimals>False</canTargetAnimals>
-		<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-	</targetingParameters>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>3</level>
-			<order>2</order>
-			<psyfocusCost>0</psyfocusCost>
-			<entropyGain>10</entropyGain>
-			<prerequisites>
-				<li>VPE_ToxmineSTNL</li>
-			</prerequisites>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-<!-- Level 4 -->
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_FalloutSTNL</defName>
-	<label>Toxic fallout</label>
-	<description>Manifest a cloud of toxic fumes in the area, causing plants to die and toxic buildup on anyone outside for a day.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/ToxicFallout</iconPath>
-	<abilityClass>SentinelFramework_STNL.Ability_ForceCondition</abilityClass>
-	<durationTime>60000</durationTime>
-	<durationTimeStatFactors>
-	<PsychicSensitivity>1</PsychicSensitivity>
-	</durationTimeStatFactors>
-	<castTime>180</castTime>
-	<targetMode>Self</targetMode>
-	<castSound>PsychicShockLanceCast</castSound>
+<Defs>
+	<!-- Level 1 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxglandsSTNL</defName>
+		<label>Tox-gland mutation</label>
+		<description>Mutate the target to grant them the ability to spew out tox gas from themselves. The target will retain its toxic environemnt resistance.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/GlandMutation</iconPath>
+		<castTime>120</castTime>
+		<targetMode>Pawn</targetMode>
+		<range>14</range>
+		<castSound>Explosion_FirefoamPopper</castSound>
 		<needsTicking>true</needsTicking>
-	<showUndrafted>true</showUndrafted>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>4</level>
-			<order>1</order>
-			<psyfocusCost>0.3</psyfocusCost>
-			<entropyGain>0</entropyGain>
-			<prerequisites>
-				<li>VPE_ToxShockSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="SentinelFramework_STNL.AbilityForceCondiExt">
-		<conditionDef>ToxicFallout</conditionDef>
-		<global>false</global>
-		<scaleDuraWithSensi>True</scaleDuraWithSensi>
-		<aiCanUse>false</aiCanUse>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_AcidSmogSTNL</defName>
-	<label>Toxic wasteland</label>
-	<description>Provoke a toxic storm in the region, this condition will fully pollute unroofed areas over the span of a few days, creatures exposed to this condition will suffer from toxic buildup.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/AcidicSmog</iconPath>
-	<abilityClass>SentinelFramework_STNL.Ability_ForceCondition</abilityClass>
-	<durationTime>60000</durationTime>
-	<durationTimeStatFactors>
-		<PsychicSensitivity>1</PsychicSensitivity>
-	</durationTimeStatFactors>
-	<castTime>180</castTime>
-	<needsTicking>True</needsTicking>
-	<targetMode>Self</targetMode>
-	<castSound>PsychicShockLanceCast</castSound>
-	<showUndrafted>true</showUndrafted>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>4</level>
-			<order>3</order>
-			<psyfocusCost>0.5</psyfocusCost>
-			<entropyGain>0</entropyGain>
-			<prerequisites>
-				<li>VPE_FalloutSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="SentinelFramework_STNL.AbilityForceCondiExt">
-			<conditionDef>VPE_Biosoother_ToxicWasteland_STNL</conditionDef>
-			<global>false</global>
-			<scaleDuraWithSensi>True</scaleDuraWithSensi>
-			<aiCanUse>false</aiCanUse>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<!-- Level 5 -->
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>VPE_ToxSwarmSTNL</defName>
-    <label>Polluswarm</label>
-    <description>Trigger a chemical reaction at the target location, causing a swarm of insectoids to set up cocoons at this position, the insectoids will attack anyone that disturbs these cocoons.\n\nThe infestation will be twice as big if used on a polluted area.</description>
-    <iconPath>UI_BiohazardSTNL/Abilities/PollutionSwarm</iconPath>
-    <abilityClass>VPE_Biohazard.SpawnInsectoidPollutionResponse</abilityClass>
-    <castTime>120</castTime>
-	<goodwillImpact>-100</goodwillImpact>
-	<castSound>Psycast_Skip_Pulse</castSound>
-    <range>45</range>
-    <!-- <radius>5</radius> -->
-    <targetMode>Location</targetMode>
-    <hasAoE>False</hasAoE>
-	<needsTicking>true</needsTicking>
-    <fleckOnTarget>VFEP_PsycastAreaEffectSlow</fleckOnTarget>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>VPE_BiohazardSTNL</path>
-        <level>5</level>
-        <order>1</order>
-        <psyfocusCost>0.12</psyfocusCost>
-        <entropyGain>90</entropyGain>
-        <prerequisites>
-          <li>VPE_ToxBuildupSTNL</li>
-		  <li>VPE_DeadreactorSTNL</li>
-        </prerequisites>
-      </li>
-    </modExtensions>
-  </VEF.Abilities.AbilityDef>
-  
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_ToxBuildupSTNL</defName>
-	<label>Induce toxic buildup</label>
-	<description>Skip toxic waste directly inside of the target, causing them to get poisoned, bypasses resistances. Considered a horrible action by the target's faction.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/buildup</iconPath>
-	<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
-	<castTime>120</castTime>
-	<goodwillImpact>-100</goodwillImpact>
-	<castSound>Psycast_Skip_Pulse</castSound>
-	<range>45</range>
-	<radius>5</radius>
-	<targetMode>Location</targetMode>
-	<hasAoE>true</hasAoE>
-	<needsTicking>true</needsTicking>
-	<targetingParametersForAoE>
-		<canTargetSelf>False</canTargetSelf>
-		<canTargetHumans>True</canTargetHumans>
-		<canTargetMechs>false</canTargetMechs>
-		<canTargetAnimals>True</canTargetAnimals>
-		<neverTargetIncapacitated>false</neverTargetIncapacitated>
-	</targetingParametersForAoE>
-	<fleckOnTarget>VFEP_PsycastAreaEffectSlow</fleckOnTarget>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>5</level>
-			<order>2</order>
-			<psyfocusCost>0.09</psyfocusCost>
-			<entropyGain>125</entropyGain>
-			<prerequisites>
-				<li>VPE_FalloutSTNL</li>
-				<li>VPE_ToxCatalystSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_Hediff">
-			<hediff>ToxicBuildup</hediff>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_ToxShellSTNL</defName>
-	<label>Tox-shell</label>
-	<description>Skip a toxic shell directly onto the target area to quickly fill it with toxic gasses.</description>
-	<iconPath>Things/Item/Resource/Shell/ToxLanded</iconPath>
-	<castTime>15</castTime>
-	<range>30</range>
-	<radius>7.9</radius>
-	<castSound>Psycast_Skip_Exit</castSound>
-	<targetMode>Location</targetMode>
-	<abilityClass>VEF.Abilities.Ability_Spawn</abilityClass>
-	<needsTicking>true</needsTicking>
-	<chance>0</chance>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>5</level>
-			<order>2</order>
-			<psyfocusCost>0.09</psyfocusCost>
-			<entropyGain>50</entropyGain>
-			<prerequisites>
-				<li>VPE_ToxBuildupSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_Spawn">
-			<thing>Shell_Toxgas_ReleasingSTNL</thing>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-			<effecterDef>Skip_ExitNoDelay</effecterDef>
-			<maintainForTicks>60</maintainForTicks>
-			<scale>1</scale>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-<!-- Level 6 -->
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_DeadreactorSTNL</defName>
-	<label>Leaking nuclear reactor</label>
-	<description>Skip a leaking nuclear reactor from a distant ruin to the target area, it will quickly pollute the local area and cause toxic fallout in the region.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/Reactor</iconPath>
-	<castTime>15</castTime>
-	<range>15</range>
-	<radius>250</radius>
-	<castSound>Psycast_Skip_Exit</castSound>
-	<targetMode>Location</targetMode>
-	<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-	<needsTicking>true</needsTicking>
-	<chance>0</chance>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiohazardSTNL</path>
-			<level>6</level>
-			<order>1</order>
-			<psyfocusCost>0.70</psyfocusCost>
-			<entropyGain>200</entropyGain>
-			<prerequisites>
-				<li>VPE_ToxBuildupSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_Building">
-			<building>ToxifierGeneratorSTNL</building>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-			<effecterDef>Skip_ExitNoDelay</effecterDef>
-			<maintainForTicks>60</maintainForTicks>
-			<scale>7</scale>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>VPE_ToxCatalystSTNL</defName>
-    <label>Tox catalyst</label>
-    <description>Force the toxins present within the target creature/corpse/wastepack to burst out in the form of a cloud of noxious gas, dealing acid damage to nearby creatures depending on the severity of the target's toxic buildup or the amount of wastepacks in the stack.</description>
-    <iconPath>UI_BiohazardSTNL/Abilities/ToxCatalyst</iconPath>
-    <abilityClass>VPE_Biohazard.Ability_ToxicCatalyst</abilityClass>
-    <castTime>120</castTime>
-	<goodwillImpact>-100</goodwillImpact>
-	<castSound>Psycast_Skip_Pulse</castSound>
-    <range>45</range>
-    <!-- <radius>5</radius> -->
-    <targetMode>Location</targetMode>
-    <hasAoE>False</hasAoE>
-	<needsTicking>true</needsTicking>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>VPE_BiohazardSTNL</path>
-        <level>6</level>
-        <order>2</order>
-        <psyfocusCost>0.10</psyfocusCost>
-        <entropyGain>30</entropyGain>
-        <prerequisites>
-          <li>VPE_ToxShellSTNL</li>
-        </prerequisites>
-      </li>
-    </modExtensions>
-  </VEF.Abilities.AbilityDef>
-  
-  <!-- Level 7 -->
-  
-  <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>VPE_WastepackNukeSTNL</defName>
-    <label>Wastepack nuke</label>
-    <description>Unleash a large-scale explosion of various chemical agents, covering the land with great amounts of pollution and toxic gas.\n\nThe radius of the explosion scales with psychic sensitivity (800% sensitivity = maxed out, resulting in a 60 cells pollution radius, and a 80 cells gas radius.)</description>
-    <iconPath>UI_BiohazardSTNL/Abilities/WastepackNuke</iconPath>
-    <abilityClass>VPE_Biohazard.Ability_WastepackNuke</abilityClass>
-    <castTime>300</castTime>
-	<!-- <goodwillImpact>-100</goodwillImpact> -->
-	<chance>0</chance>
-	<castSound>Psycast_Skip_Pulse</castSound>
-    <range>999999</range>
-    <!-- <radius>5</radius> -->
-    <targetMode>Location</targetMode>
-    <hasAoE>False</hasAoE>
-	<needsTicking>true</needsTicking>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>VPE_BiohazardSTNL</path>
-        <level>7</level>
-        <order>2</order>
-        <psyfocusCost>0.20</psyfocusCost>
-        <entropyGain>175</entropyGain>
-        <prerequisites>
-          <li>VPE_ToxCatalystSTNL</li>
-        </prerequisites>
-      </li>
-    </modExtensions>
-  </VEF.Abilities.AbilityDef>
-  
-    <SoundDef>
-    <defName>Biohazard_ThumpExplosionOnCameraSTNL</defName>  
-    <maxSimultaneous>1</maxSimultaneous>  
-    <subSounds>
-      <li>
-        <onCamera>True</onCamera>      
-        <grains>
-          <li Class="AudioGrain_Folder">
-            <clipFolderPath>Weapon/Artillery/Mortar_Explode_Dry</clipFolderPath>
-          </li>
-        </grains>      
-        <volumeRange>80.0</volumeRange>
-		<pitchRange>0.4~0.5</pitchRange>
-      </li>
-    </subSounds>
-  </SoundDef>
-
-<!--                      Biosoother                       -->
-
-
-<!-- Level 1 -->
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_Biosoother_WasteDispersal_STNL</defName>
-	<label>Waste dispersion</label>
-	<description>Psychically destabilize toxins in the target to neutralize them. Pollutant agents will erupt in the form of a noxious gas.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/WasteDispersal</iconPath>
-	<abilityClass>VPE_Biohazard.Ability_DisperseWaste</abilityClass>
-	<castTime>30</castTime>
-	<range>29.9</range>
-	<targetMode>Thing</targetMode>
-	<targetingParameters>
-		<canTargetLocations>true</canTargetLocations>
-		<canTargetSelf>true</canTargetSelf>
-		<canTargetAnimals>true</canTargetAnimals>
-		<canTargetPawns>true</canTargetPawns>
-		<canTargetHumans>True</canTargetHumans>
-		<canTargetMechs>true</canTargetMechs>
-		<canTargetItems>true</canTargetItems>
-		<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-	</targetingParameters>
-	<castSound>VPE_Decoy_Cast</castSound>
-	<needsTicking>true</needsTicking>
-	<chance>0</chance>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiosootherV2STNL</path>
-			<level>1</level>
-			<order>1</order>
-			<psyfocusCost>0.03</psyfocusCost>
-			<entropyGain>10</entropyGain>
-		</li>
-		<li Class="VPE_Biohazard.DisperseWasteModExt">
-			<wasteDefs>
-				<li>Wastepack</li>
-			</wasteDefs>
-			<hediffsToRemove>
-				<li>ToxicBuildup</li>
-				<li>ToxicshockSTNL</li>
-			</hediffsToRemove>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-			<effecterDef>Skip_ExitNoDelay</effecterDef>
-			<maintainForTicks>30</maintainForTicks>
-			<scale>1</scale>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<!-- Level 2 -->
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_Biosoother_GasSuppression_STNL</defName>
-	<label>Clear gas</label>
-	<description>Skip the noxious gasses affecting the target area to distant locations.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/GasScrub</iconPath>
-	<abilityClass>VPE_Biohazard.Ability_GasCleanup</abilityClass>
-	<castTime>15</castTime>
-	<range>35.9</range>
-	<radius>8.9</radius>
-	<targetMode>Location</targetMode>
-	<targetingParameters>
-		<canTargetLocations>true</canTargetLocations>
-		<canTargetSelf>false</canTargetSelf>
-		<canTargetAnimals>false</canTargetAnimals>
-		<canTargetPawns>false</canTargetPawns>
-		<canTargetHumans>false</canTargetHumans>
-		<canTargetMechs>false</canTargetMechs>
-		<!-- <canTargetItems>false</canTargetItems> -->
-		<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
-	</targetingParameters>
-	<castSound>VPE_Decoy_Cast</castSound>
-	<needsTicking>true</needsTicking>
-	<chance>0</chance>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiosootherV2STNL</path>
-			<level>2</level>
-			<order>2</order>
-			<psyfocusCost>0.03</psyfocusCost>
-			<entropyGain>40</entropyGain>
-			<prerequisites>
-			<li>VPE_Biosoother_WasteDispersal_STNL</li>
-			</prerequisites>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_Biosoother_RadialWasteDispersal_STNL</defName>
-	<label>Waste dispersion pulse</label>
-	<description>Psychically destabilize toxins in the target area to neutralize them. Pollutant agents will erupt in the form of a noxious gas.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/WasteDispersalAoE</iconPath>
-	<abilityClass>VPE_Biohazard.Ability_RadialDisperse</abilityClass>
-	<castTime>60</castTime>
-	<range>35.9</range>
-	<radius>0</radius>
-	<targetMode>Thing</targetMode>
-	<targetingParameters>
-		<canTargetLocations>true</canTargetLocations>
-		<canTargetSelf>false</canTargetSelf>
-		<canTargetAnimals>false</canTargetAnimals>
-		<canTargetPawns>false</canTargetPawns>
-		<canTargetHumans>false</canTargetHumans>
-		<canTargetMechs>false</canTargetMechs>
-		<!-- <canTargetItems>false</canTargetItems> -->
-		<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
-	</targetingParameters>
-	<castSound>VPE_Decoy_Cast</castSound>
-	<needsTicking>true</needsTicking>
-	<chance>0</chance>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiosootherV2STNL</path>
-			<level>2</level>
-			<order>3</order>
-			<psyfocusCost>0.07</psyfocusCost>
-			<entropyGain>50</entropyGain>
-			<prerequisites>
-			<li>VPE_Biosoother_GasSuppression_STNL</li>
-			</prerequisites>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<!-- Level 3 -->
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_ToxImmuneSTNL</defName>
-	<label>Tox-immunization mutation</label>
-	<description>Mutate the target's lungs into organic toxin filters, making it immune to environmental toxins while decreasing breathing efficiency.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/ImmunizationSTNL</iconPath>
-	<castTime>120</castTime>
-	<targetMode>Pawn</targetMode>
-	<range>14.9</range>
-	<castSound>Explosion_FirefoamPopper</castSound>
-	<needsTicking>true</needsTicking>
-	<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
-	<targetingParameters>
-		<canTargetLocations>False</canTargetLocations>
-		<canTargetSelf>True</canTargetSelf>
-		<canTargetAnimals>false</canTargetAnimals>
-		<canTargetPawns>True</canTargetPawns>
-		<canTargetHumans>True</canTargetHumans>
-		<canTargetMechs>false</canTargetMechs>
-	</targetingParameters>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiosootherV2STNL</path>
-			<level>3</level>
-			<order>2</order>
-			<psyfocusCost>0.80</psyfocusCost>
-			<entropyGain>25</entropyGain>
-			<prerequisites>
-				<li>VPE_Biosoother_GasSuppression_STNL</li>
-			</prerequisites>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_Hediff">
-			<hediff>ToxicImmunitySTNL</hediff>
-		</li>
-		<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-			<effecterDef>ToxGasReleasing</effecterDef>
-			<maintainForTicks>60</maintainForTicks>
-			<scale>1</scale>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<!-- Level 5 -->
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-<defName>VPE_PollutionPumpSTNL</defName>
-<label>Proto-pollution pump</label>
-<description>Warp a prototype pollution pump to the target area. \n\nThis pollution pump breaks down and uses part of the harvested materials to power itself.\n\nThis model is quite large in size, requiring a 7x7 area to place down.</description>
-<iconPath>UI_BiohazardSTNL/Building/Pump/FatPump</iconPath>
-<castTime>15</castTime>
-<range>15</range>
-<castSound>Psycast_Skip_Exit</castSound>
-<targetMode>Location</targetMode>
-<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
-<needsTicking>true</needsTicking>
-<chance>0</chance>
-<modExtensions>
-<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-<path>VPE_BiosootherV2STNL</path>
-<level>5</level>
-<order>1</order>
-<psyfocusCost>0.75</psyfocusCost>
-<entropyGain>0</entropyGain>
-        <prerequisites>
-          <li>VPE_ToxImmuneSTNL</li>
-        </prerequisites>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_Building">
-<building>PollutionPumpSTNL</building>
-</li>
-<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
-<effecterDef>Skip_ExitNoDelay</effecterDef>
-<maintainForTicks>60</maintainForTicks>
-<scale>7</scale>
-</li>
-</modExtensions>
-</VEF.Abilities.AbilityDef>
-
-<!-- Level 6 -->
-
-<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-	<defName>VPE_ClearweatherSTNL</defName>
-	<label>Pollution breakdown</label>
-	<description>Induce an orbital satelitte to neutralize pollution particules in the region over the span of a few days, the process requires the polluted area to be exposed to the sky.</description>
-	<iconPath>UI_BiohazardSTNL/Abilities/PollutionBreakdown</iconPath>
-	<abilityClass>SentinelFramework_STNL.Ability_ForceCondition</abilityClass>
-	<durationTime>60000</durationTime>
-	<durationTimeStatFactors>
-	<PsychicSensitivity>1</PsychicSensitivity>
-	</durationTimeStatFactors>
-	<castTime>180</castTime>
-	<targetMode>Self</targetMode>
-	<castSound>PsychicSoothePulserCast</castSound>
-	<needsTicking>true</needsTicking>
-	<showUndrafted>true</showUndrafted>
-	<modExtensions>
-		<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-			<path>VPE_BiosootherV2STNL</path>
-			<level>6</level>
-			<order>1</order>
-			<psyfocusCost>0.5</psyfocusCost>
-			<entropyGain>0</entropyGain>
-			<prerequisites>
-				<li>VPE_PollutionPumpSTNL</li>
-			</prerequisites>
-		</li>
-		<li Class="SentinelFramework_STNL.AbilityForceCondiExt">
-			<conditionDef>VPE_Biosoother_PollutionCleanup_STNL</conditionDef>
-			<global>false</global>
-			<scaleDuraWithSensi>True</scaleDuraWithSensi>
-			<aiCanUse>false</aiCanUse>
-		</li>
-	</modExtensions>
-</VEF.Abilities.AbilityDef>
-
+		<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
+		<targetingParameters>
+			<canTargetLocations>False</canTargetLocations>
+			<canTargetSelf>True</canTargetSelf>
+			<canTargetAnimals>false</canTargetAnimals>
+			<canTargetPawns>True</canTargetPawns>
+			<canTargetHumans>True</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+		</targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>1</level>
+				<order>1</order>
+				<psyfocusCost>0.40</psyfocusCost>
+				<entropyGain>0</entropyGain>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ToxglandsSTNL</hediff>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>ToxGasReleasing</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 2 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxmineSTNL</defName>
+		<label>Tox-mine</label>
+		<description>Skip a distant tox IED from a waster colony to your base, the skip process will make that IED unstable, causing it to be far more fragile than a standard one.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/Mine</iconPath>
+		<castTime>15</castTime>
+		<range>15</range>
+		<castSound>Psycast_Skip_Exit</castSound>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>2</level>
+				<order>2</order>
+				<psyfocusCost>0.09</psyfocusCost>
+				<entropyGain>50</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxglandsSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>TrapIED_ToxgasSTNL</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>Skip_ExitNoDelay</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 3 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxShockSTNL</defName>
+		<label>Toxic shock</label>
+		<description>Skip toxic waste directly inside of the target, greatly reducing their consciousnes as well as breathing and moving capabilities. Ignores resistance. Considered an horrible action by the target's faction.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/Shock</iconPath>
+		<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
+		<castTime>60</castTime>
+		<goodwillImpact>-100</goodwillImpact>
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>45</range>
+		<radius>8</radius>
+		<targetMode>Location</targetMode>
+		<hasAoE>true</hasAoE>
+		<needsTicking>true</needsTicking>
+		<targetingParametersForAoE>
+			<canTargetSelf>False</canTargetSelf>
+			<canTargetHumans>True</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+			<canTargetAnimals>True</canTargetAnimals>
+			<neverTargetIncapacitated>false</neverTargetIncapacitated>
+		</targetingParametersForAoE>
+		<fleckOnTarget>VFEP_PsycastAreaEffectSlow</fleckOnTarget>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>3</level>
+				<order>1</order>
+				<psyfocusCost>0.06</psyfocusCost>
+				<entropyGain>30</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxmineSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ToxicshockSTNL</hediff>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_PollutionFocusSTNL</defName>
+		<label>Waste focus</label>
+		<description>Absorb the primary chemical present within wastepacks and convert it into psyfocus, the process will cause leftover chemicals to pollute the nearby area.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/Wastefocus</iconPath>
+		<abilityClass>VPE_Biohazard.Ability_PollutionFocus</abilityClass>
+		<castTime>60</castTime>
+		<chance>0</chance>
+		<!-- <goodwillImpact>-100</goodwillImpact> -->
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>14.9</range>
+		<targetMode>Thing</targetMode>
+		<needsTicking>true</needsTicking>
+		<targetingParameters>
+			<canTargetItems>True</canTargetItems>
+			<canTargetLocations>False</canTargetLocations>
+			<canTargetSelf>False</canTargetSelf>
+			<canTargetHumans>False</canTargetHumans>
+			<canTargetMechs>False</canTargetMechs>
+			<canTargetAnimals>False</canTargetAnimals>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>3</level>
+				<order>2</order>
+				<psyfocusCost>0</psyfocusCost>
+				<entropyGain>10</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxmineSTNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 4 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_FalloutSTNL</defName>
+		<label>Toxic fallout</label>
+		<description>Manifest a cloud of toxic fumes in the area, causing plants to die and toxic buildup on anyone outside for a day.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/ToxicFallout</iconPath>
+		<abilityClass>SentinelFramework_STNL.Ability_ForceCondition</abilityClass>
+		<durationTime>60000</durationTime>
+		<durationTimeStatFactors>
+			<PsychicSensitivity>1</PsychicSensitivity>
+		</durationTimeStatFactors>
+		<castTime>180</castTime>
+		<targetMode>Self</targetMode>
+		<castSound>PsychicShockLanceCast</castSound>
+		<needsTicking>true</needsTicking>
+		<showUndrafted>true</showUndrafted>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>4</level>
+				<order>1</order>
+				<psyfocusCost>0.3</psyfocusCost>
+				<entropyGain>0</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxShockSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="SentinelFramework_STNL.AbilityForceCondiExt">
+				<conditionDef>ToxicFallout</conditionDef>
+				<global>false</global>
+				<scaleDuraWithSensi>True</scaleDuraWithSensi>
+				<aiCanUse>false</aiCanUse>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_AcidSmogSTNL</defName>
+		<label>Toxic wasteland</label>
+		<description>Provoke a toxic storm in the region, this condition will fully pollute unroofed areas over the span of a few days, creatures exposed to this condition will suffer from toxic buildup.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/AcidicSmog</iconPath>
+		<abilityClass>SentinelFramework_STNL.Ability_ForceCondition</abilityClass>
+		<durationTime>60000</durationTime>
+		<durationTimeStatFactors>
+			<PsychicSensitivity>1</PsychicSensitivity>
+		</durationTimeStatFactors>
+		<castTime>180</castTime>
+		<needsTicking>True</needsTicking>
+		<targetMode>Self</targetMode>
+		<castSound>PsychicShockLanceCast</castSound>
+		<showUndrafted>true</showUndrafted>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>4</level>
+				<order>3</order>
+				<psyfocusCost>0.5</psyfocusCost>
+				<entropyGain>0</entropyGain>
+				<prerequisites>
+					<li>VPE_FalloutSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="SentinelFramework_STNL.AbilityForceCondiExt">
+				<conditionDef>VPE_Biosoother_ToxicWasteland_STNL</conditionDef>
+				<global>false</global>
+				<scaleDuraWithSensi>True</scaleDuraWithSensi>
+				<aiCanUse>false</aiCanUse>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 5 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxSwarmSTNL</defName>
+		<label>Polluswarm</label>
+		<description>Trigger a chemical reaction at the target location, causing a swarm of insectoids to set up cocoons at this position, the insectoids will attack anyone that disturbs these cocoons.\n\nThe infestation will be twice as big if used on a polluted area.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/PollutionSwarm</iconPath>
+		<abilityClass>VPE_Biohazard.SpawnInsectoidPollutionResponse</abilityClass>
+		<castTime>120</castTime>
+		<goodwillImpact>-100</goodwillImpact>
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>45</range>
+		<!-- <radius>5</radius> -->
+		<targetMode>Location</targetMode>
+		<hasAoE>False</hasAoE>
+		<needsTicking>true</needsTicking>
+		<fleckOnTarget>VFEP_PsycastAreaEffectSlow</fleckOnTarget>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>5</level>
+				<order>1</order>
+				<psyfocusCost>0.12</psyfocusCost>
+				<entropyGain>90</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxBuildupSTNL</li>
+					<li>VPE_DeadreactorSTNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxBuildupSTNL</defName>
+		<label>Induce toxic buildup</label>
+		<description>Skip toxic waste directly inside of the target, causing them to get poisoned, bypasses resistances. Considered a horrible action by the target's faction.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/buildup</iconPath>
+		<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
+		<castTime>120</castTime>
+		<goodwillImpact>-100</goodwillImpact>
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>45</range>
+		<radius>5</radius>
+		<targetMode>Location</targetMode>
+		<hasAoE>true</hasAoE>
+		<needsTicking>true</needsTicking>
+		<targetingParametersForAoE>
+			<canTargetSelf>False</canTargetSelf>
+			<canTargetHumans>True</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+			<canTargetAnimals>True</canTargetAnimals>
+			<neverTargetIncapacitated>false</neverTargetIncapacitated>
+		</targetingParametersForAoE>
+		<fleckOnTarget>VFEP_PsycastAreaEffectSlow</fleckOnTarget>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>5</level>
+				<order>2</order>
+				<psyfocusCost>0.09</psyfocusCost>
+				<entropyGain>125</entropyGain>
+				<prerequisites>
+					<li>VPE_FalloutSTNL</li>
+					<li>VPE_ToxCatalystSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ToxicBuildup</hediff>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxShellSTNL</defName>
+		<label>Tox-shell</label>
+		<description>Skip a toxic shell directly onto the target area to quickly fill it with toxic gasses.</description>
+		<iconPath>Things/Item/Resource/Shell/ToxLanded</iconPath>
+		<castTime>15</castTime>
+		<range>30</range>
+		<radius>7.9</radius>
+		<castSound>Psycast_Skip_Exit</castSound>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_Spawn</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>5</level>
+				<order>2</order>
+				<psyfocusCost>0.09</psyfocusCost>
+				<entropyGain>50</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxBuildupSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Spawn">
+				<thing>Shell_Toxgas_ReleasingSTNL</thing>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>Skip_ExitNoDelay</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 6 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_DeadreactorSTNL</defName>
+		<label>Leaking nuclear reactor</label>
+		<description>Skip a leaking nuclear reactor from a distant ruin to the target area, it will quickly pollute the local area and cause toxic fallout in the region.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/Reactor</iconPath>
+		<castTime>15</castTime>
+		<range>15</range>
+		<radius>199</radius>
+		<castSound>Psycast_Skip_Exit</castSound>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>6</level>
+				<order>1</order>
+				<psyfocusCost>0.70</psyfocusCost>
+				<entropyGain>200</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxBuildupSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>ToxifierGeneratorSTNL</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>Skip_ExitNoDelay</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>7</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxCatalystSTNL</defName>
+		<label>Tox catalyst</label>
+		<description>Force the toxins present within the target creature/corpse/wastepack to burst out in the form of a cloud of noxious gas, dealing acid damage to nearby creatures depending on the severity of the target's toxic buildup or the amount of wastepacks in the stack.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/ToxCatalyst</iconPath>
+		<abilityClass>VPE_Biohazard.Ability_ToxicCatalyst</abilityClass>
+		<castTime>120</castTime>
+		<goodwillImpact>-100</goodwillImpact>
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>45</range>
+		<!-- <radius>5</radius> -->
+		<targetMode>Location</targetMode>
+		<hasAoE>False</hasAoE>
+		<needsTicking>true</needsTicking>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>6</level>
+				<order>2</order>
+				<psyfocusCost>0.10</psyfocusCost>
+				<entropyGain>30</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxShellSTNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 7 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_WastepackNukeSTNL</defName>
+		<label>Wastepack nuke</label>
+		<description>Unleash a large-scale explosion of various chemical agents, covering the land with great amounts of pollution and toxic gas.\n\nThe radius of the explosion scales with psychic sensitivity (800% sensitivity = maxed out, resulting in a 60 cells pollution radius, and a 80 cells gas radius.)</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/WastepackNuke</iconPath>
+		<abilityClass>VPE_Biohazard.Ability_WastepackNuke</abilityClass>
+		<castTime>300</castTime>
+		<!-- <goodwillImpact>-100</goodwillImpact> -->
+		<chance>0</chance>
+		<castSound>Psycast_Skip_Pulse</castSound>
+		<range>999999</range>
+		<!-- <radius>5</radius> -->
+		<targetMode>Location</targetMode>
+		<hasAoE>False</hasAoE>
+		<needsTicking>true</needsTicking>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiohazardSTNL</path>
+				<level>7</level>
+				<order>2</order>
+				<psyfocusCost>0.20</psyfocusCost>
+				<entropyGain>175</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxCatalystSTNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<SoundDef>
+		<defName>Biohazard_ThumpExplosionOnCameraSTNL</defName>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<onCamera>True</onCamera>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Weapon/Artillery/Mortar_Explode_Dry</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>80.0</volumeRange>
+				<pitchRange>0.4~0.5</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+	<!--                      Biosoother                       -->
+	<!-- Level 1 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_Biosoother_WasteDispersal_STNL</defName>
+		<label>Waste dispersion</label>
+		<description>Psychically destabilize toxins in the target to neutralize them. Pollutant agents will erupt in the form of a noxious gas.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/WasteDispersal</iconPath>
+		<abilityClass>VPE_Biohazard.Ability_DisperseWaste</abilityClass>
+		<castTime>30</castTime>
+		<range>29.9</range>
+		<targetMode>Thing</targetMode>
+		<targetingParameters>
+			<canTargetLocations>true</canTargetLocations>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetAnimals>true</canTargetAnimals>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetHumans>True</canTargetHumans>
+			<canTargetMechs>true</canTargetMechs>
+			<canTargetItems>true</canTargetItems>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<castSound>VPE_Decoy_Cast</castSound>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiosootherV2STNL</path>
+				<level>1</level>
+				<order>1</order>
+				<psyfocusCost>0.03</psyfocusCost>
+				<entropyGain>10</entropyGain>
+			</li>
+			<li Class="VPE_Biohazard.DisperseWasteModExt">
+				<wasteDefs>
+					<li>Wastepack</li>
+				</wasteDefs>
+				<hediffsToRemove>
+					<li>ToxicBuildup</li>
+					<li>ToxicshockSTNL</li>
+				</hediffsToRemove>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>Skip_ExitNoDelay</effecterDef>
+				<maintainForTicks>30</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 2 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_Biosoother_GasSuppression_STNL</defName>
+		<label>Clear gas</label>
+		<description>Skip the noxious gasses affecting the target area to distant locations.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/GasScrub</iconPath>
+		<abilityClass>VPE_Biohazard.Ability_GasCleanup</abilityClass>
+		<castTime>15</castTime>
+		<range>35.9</range>
+		<radius>8.9</radius>
+		<targetMode>Location</targetMode>
+		<targetingParameters>
+			<canTargetLocations>true</canTargetLocations>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetAnimals>false</canTargetAnimals>
+			<canTargetPawns>false</canTargetPawns>
+			<canTargetHumans>false</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+			<!-- <canTargetItems>false</canTargetItems> -->
+			<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+		</targetingParameters>
+		<castSound>VPE_Decoy_Cast</castSound>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiosootherV2STNL</path>
+				<level>2</level>
+				<order>2</order>
+				<psyfocusCost>0.03</psyfocusCost>
+				<entropyGain>40</entropyGain>
+				<prerequisites>
+					<li>VPE_Biosoother_WasteDispersal_STNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_Biosoother_RadialWasteDispersal_STNL</defName>
+		<label>Waste dispersion pulse</label>
+		<description>Psychically destabilize toxins in the target area to neutralize them. Pollutant agents will erupt in the form of a noxious gas.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/WasteDispersalAoE</iconPath>
+		<abilityClass>VPE_Biohazard.Ability_RadialDisperse</abilityClass>
+		<castTime>60</castTime>
+		<range>35.9</range>
+		<radius>0</radius>
+		<targetMode>Thing</targetMode>
+		<targetingParameters>
+			<canTargetLocations>true</canTargetLocations>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetAnimals>false</canTargetAnimals>
+			<canTargetPawns>false</canTargetPawns>
+			<canTargetHumans>false</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+			<!-- <canTargetItems>false</canTargetItems> -->
+			<!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+		</targetingParameters>
+		<castSound>VPE_Decoy_Cast</castSound>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiosootherV2STNL</path>
+				<level>2</level>
+				<order>3</order>
+				<psyfocusCost>0.07</psyfocusCost>
+				<entropyGain>50</entropyGain>
+				<prerequisites>
+					<li>VPE_Biosoother_GasSuppression_STNL</li>
+				</prerequisites>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 3 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ToxImmuneSTNL</defName>
+		<label>Tox-immunization mutation</label>
+		<description>Mutate the target's lungs into organic toxin filters, making it immune to environmental toxins while decreasing breathing efficiency.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/ImmunizationSTNL</iconPath>
+		<castTime>120</castTime>
+		<targetMode>Pawn</targetMode>
+		<range>14.9</range>
+		<castSound>Explosion_FirefoamPopper</castSound>
+		<needsTicking>true</needsTicking>
+		<abilityClass>VEF.Abilities.Ability_Blank</abilityClass>
+		<targetingParameters>
+			<canTargetLocations>False</canTargetLocations>
+			<canTargetSelf>True</canTargetSelf>
+			<canTargetAnimals>false</canTargetAnimals>
+			<canTargetPawns>True</canTargetPawns>
+			<canTargetHumans>True</canTargetHumans>
+			<canTargetMechs>false</canTargetMechs>
+		</targetingParameters>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiosootherV2STNL</path>
+				<level>3</level>
+				<order>2</order>
+				<psyfocusCost>0.80</psyfocusCost>
+				<entropyGain>25</entropyGain>
+				<prerequisites>
+					<li>VPE_Biosoother_GasSuppression_STNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ToxicImmunitySTNL</hediff>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>ToxGasReleasing</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>1</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 5 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_PollutionPumpSTNL</defName>
+		<label>Proto-pollution pump</label>
+		<description>Warp a prototype pollution pump to the target area. \n\nThis pollution pump breaks down and uses part of the harvested materials to power itself.\n\nThis model is quite large in size, requiring a 7x7 area to place down.</description>
+		<iconPath>UI_BiohazardSTNL/Building/Pump/FatPump</iconPath>
+		<castTime>15</castTime>
+		<range>15</range>
+		<radius>199</radius>
+		<castSound>Psycast_Skip_Exit</castSound>
+		<targetMode>Location</targetMode>
+		<abilityClass>VEF.Abilities.Ability_SpawnBuilding</abilityClass>
+		<needsTicking>true</needsTicking>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiosootherV2STNL</path>
+				<level>5</level>
+				<order>1</order>
+				<psyfocusCost>0.75</psyfocusCost>
+				<entropyGain>0</entropyGain>
+				<prerequisites>
+					<li>VPE_ToxImmuneSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Building">
+				<building>PollutionPumpSTNL</building>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_EffecterOnTarget">
+				<effecterDef>Skip_ExitNoDelay</effecterDef>
+				<maintainForTicks>60</maintainForTicks>
+				<scale>7</scale>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+	<!-- Level 6 -->
+	<VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+		<defName>VPE_ClearweatherSTNL</defName>
+		<label>Pollution breakdown</label>
+		<description>Induce an orbital satelitte to neutralize pollution particules in the region over the span of a few days, the process requires the polluted area to be exposed to the sky.</description>
+		<iconPath>UI_BiohazardSTNL/Abilities/PollutionBreakdown</iconPath>
+		<abilityClass>SentinelFramework_STNL.Ability_ForceCondition</abilityClass>
+		<durationTime>60000</durationTime>
+		<durationTimeStatFactors>
+			<PsychicSensitivity>1</PsychicSensitivity>
+		</durationTimeStatFactors>
+		<castTime>180</castTime>
+		<targetMode>Self</targetMode>
+		<castSound>PsychicSoothePulserCast</castSound>
+		<needsTicking>true</needsTicking>
+		<showUndrafted>true</showUndrafted>
+		<modExtensions>
+			<li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+				<path>VPE_BiosootherV2STNL</path>
+				<level>6</level>
+				<order>1</order>
+				<psyfocusCost>0.5</psyfocusCost>
+				<entropyGain>0</entropyGain>
+				<prerequisites>
+					<li>VPE_PollutionPumpSTNL</li>
+				</prerequisites>
+			</li>
+			<li Class="SentinelFramework_STNL.AbilityForceCondiExt">
+				<conditionDef>VPE_Biosoother_PollutionCleanup_STNL</conditionDef>
+				<global>false</global>
+				<scaleDuraWithSensi>True</scaleDuraWithSensi>
+				<aiCanUse>false</aiCanUse>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
 </Defs>
 
